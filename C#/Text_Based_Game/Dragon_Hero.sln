@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dragon_Hero", "Dragon_Hero\Dragon_Hero.csproj", "{37F4C452-6681-4C6E-992A-4CA22D24C1A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37F4C452-6681-4C6E-992A-4CA22D24C1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F4C452-6681-4C6E-992A-4CA22D24C1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F4C452-6681-4C6E-992A-4CA22D24C1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F4C452-6681-4C6E-992A-4CA22D24C1A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1324AF2-31EA-4427-97F3-F94FCF7B50D9}
+	EndGlobalSection
+EndGlobal

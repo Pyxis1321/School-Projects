@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Dragon_Hero/1.0.0": {
+        "runtime": {
+          "Dragon_Hero.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dragon_Hero/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
