@@ -1,0 +1,14 @@
+D:\Code\Project\SnakeRefactor\SnakeRefactor\bin\Debug\net7.0\SnakeRefactor.exe
+D:\Code\Project\SnakeRefactor\SnakeRefactor\bin\Debug\net7.0\SnakeRefactor.deps.json
+D:\Code\Project\SnakeRefactor\SnakeRefactor\bin\Debug\net7.0\SnakeRefactor.runtimeconfig.json
+D:\Code\Project\SnakeRefactor\SnakeRefactor\bin\Debug\net7.0\SnakeRefactor.dll
+D:\Code\Project\SnakeRefactor\SnakeRefactor\bin\Debug\net7.0\SnakeRefactor.pdb
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.AssemblyInfoInputs.cache
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.AssemblyInfo.cs
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.csproj.CoreCompileInputs.cache
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.dll
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\refint\SnakeRefactor.dll
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.pdb
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\SnakeRefactor.genruntimeconfig.cache
+D:\Code\Project\SnakeRefactor\SnakeRefactor\obj\Debug\net7.0\ref\SnakeRefactor.dll
