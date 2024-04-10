@@ -2,12 +2,11 @@
 {
 	public int Xpos { get; set; }
 	public int Ypos { get; set; }
+	public ConsoleColor ObjectColor { get; set; }
 }
 
 class Snake : GameObject
 {
-	public ConsoleColor SnakeColor { get; set; }
-
 	public void Move(Direction direction)
 	{
 		switch (direction)
@@ -39,12 +38,12 @@ namespace SnakeGame
 		private static int windowHeight = 16;
 		private static int windowWidth = 32;
 		private static int initialSnakeSize = 5;
-		private static Snake snake;
-		private static Berry berry;
-		private static List<int> xPos = new List<int>();
-		private static List<int> yPos = new List<int>();
 		private static int score;
 		private static bool gameOver;
+		private static List<int> xPos = new List<int>();
+		private static List<int> yPos = new List<int>();
+		private static Snake snake;
+		private static Berry berry;
 		private static Direction movement = Direction.Right;
 		private static Random randNum = new Random();
 
@@ -72,13 +71,14 @@ namespace SnakeGame
 			{
 				Xpos = Console.WindowWidth / 2,
 				Ypos = Console.WindowHeight / 2,
-				SnakeColor = ConsoleColor.Red
+				ObjectColor = ConsoleColor.Red
 			};
 
 			berry = new Berry
 			{
 				Xpos = randNum.Next(1, windowWidth - 1),
 				Ypos = randNum.Next(1, windowHeight - 1),
+				ObjectColor = ConsoleColor.Green
 			};
 		}
 
@@ -126,7 +126,7 @@ namespace SnakeGame
 		static void RenderGame()
 		{
 			// Redraw only head and erase tail as needed
-			Console.ForegroundColor = snake.SnakeColor;
+			Console.ForegroundColor = snake.ObjectColor;
 			if (xPos.Count > 1)
 			{
 				var tail = new { X = xPos[0], Y = yPos[0] };
@@ -139,7 +139,7 @@ namespace SnakeGame
 			Console.Write("■");
 
 			// Redraw berry
-			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.ForegroundColor = berry.ObjectColor;
 			Console.SetCursorPosition(berry.Xpos, berry.Ypos);
 			Console.Write("■");
 		}
