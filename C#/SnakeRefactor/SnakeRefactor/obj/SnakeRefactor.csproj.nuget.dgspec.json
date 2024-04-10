@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\Project\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj": {}
+    "D:\\Code\\Git repo\\School-Projects\\C#\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj": {}
   },
   "projects": {
-    "D:\\Code\\Project\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj": {
+    "D:\\Code\\Git repo\\School-Projects\\C#\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Project\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj",
+        "projectUniqueName": "D:\\Code\\Git repo\\School-Projects\\C#\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj",
         "projectName": "SnakeRefactor",
-        "projectPath": "D:\\Code\\Project\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj",
+        "projectPath": "D:\\Code\\Git repo\\School-Projects\\C#\\SnakeRefactor\\SnakeRefactor\\SnakeRefactor.csproj",
         "packagesPath": "C:\\Users\\kopas\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Project\\SnakeRefactor\\SnakeRefactor\\obj\\",
+        "outputPath": "D:\\Code\\Git repo\\School-Projects\\C#\\SnakeRefactor\\SnakeRefactor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kopas\\AppData\\Roaming\\NuGet\\NuGet.Config",

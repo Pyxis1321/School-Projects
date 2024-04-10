@@ -36,30 +36,120 @@ namespace SnakeGame
 {
 	class Program
 	{
-		protected static int windowHeight = 16;
-		protected static int windowWidth = 32;
-		protected static int initialSnakeSize = 5;
-
-		private static readonly Random randNum = new Random();
+		private static int windowHeight = 16;
+		private static int windowWidth = 32;
+		private static int initialSnakeSize = 5;
+		private static Snake snake;
+		private static Berry berry;
+		private static List<int> xPos = new List<int>();
+		private static List<int> yPos = new List<int>();
+		private static int score;
+		private static bool gameOver;
 		private static Direction movement = Direction.Right;
+		private static Random randNum = new Random();
 
-		static void DrawBorders()
+		static void Main(string[] args)
 		{
-			Console.ForegroundColor = ConsoleColor.White;
-			for (int x = 0; x < Console.WindowWidth; x++)
+			InitializeGame();
+			while (!gameOver)
 			{
-				Console.SetCursorPosition(x, 0);
-				Console.Write("■");
-				Console.SetCursorPosition(x, Console.WindowHeight - 1);
-				Console.Write("■");
+				UpdateGame();
+				RenderGame();
+				Thread.Sleep(100);
 			}
-			for (int y = 0; y < Console.WindowHeight; y++)
+			EndGame();
+		}
+
+		static void InitializeGame()
+		{
+			Console.CursorVisible = false;
+			Console.SetWindowSize(windowWidth, windowHeight);
+			DrawBorders();
+			score = initialSnakeSize;
+			gameOver = false;
+
+			snake = new Snake
 			{
-				Console.SetCursorPosition(0, y);
-				Console.Write("■");
-				Console.SetCursorPosition(Console.WindowWidth - 1, y);
-				Console.Write("■");
+				Xpos = Console.WindowWidth / 2,
+				Ypos = Console.WindowHeight / 2,
+				SnakeColor = ConsoleColor.Red
+			};
+
+			berry = new Berry
+			{
+				Xpos = randNum.Next(1, windowWidth - 1),
+				Ypos = randNum.Next(1, windowHeight - 1),
+			};
+		}
+
+		static void UpdateGame()
+		{
+			UpdateDirection();
+			snake.Move(movement);
+
+			// Check for self collision
+			for (int i = 0; i < xPos.Count; i++)
+			{
+				if (xPos[i] == snake.Xpos && yPos[i] == snake.Ypos)
+				{
+					gameOver = true;
+					return;
+				}
 			}
+
+			// Check for border collision
+			if (snake.Xpos == 0 || snake.Xpos == windowWidth - 1 || snake.Ypos == 0 || snake.Ypos == windowHeight - 1)
+			{
+				gameOver = true;
+				return;
+			}
+
+			// Check for berry collection
+			if (snake.Xpos == berry.Xpos && snake.Ypos == berry.Ypos)
+			{
+				score++;
+				berry.Xpos = randNum.Next(1, windowWidth - 1);
+				berry.Ypos = randNum.Next(1, windowHeight - 1);
+			}
+
+			xPos.Add(snake.Xpos);
+			yPos.Add(snake.Ypos);
+
+			// Ensure the tail moves with the snake, maintaining length
+			if (xPos.Count > score)
+			{
+				xPos.RemoveAt(0);
+				yPos.RemoveAt(0);
+			}
+		}
+
+		static void RenderGame()
+		{
+			// Redraw only head and erase tail as needed
+			Console.ForegroundColor = snake.SnakeColor;
+			if (xPos.Count > 1)
+			{
+				var tail = new { X = xPos[0], Y = yPos[0] };
+				Console.SetCursorPosition(tail.X, tail.Y);
+				Console.Write(" ");
+			}
+
+			var head = new { X = xPos.Last(), Y = yPos.Last() };
+			Console.SetCursorPosition(head.X, head.Y);
+			Console.Write("■");
+
+			// Redraw berry
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.SetCursorPosition(berry.Xpos, berry.Ypos);
+			Console.Write("■");
+		}
+
+		static void EndGame()
+		{
+			Console.SetCursorPosition(0, windowHeight / 2);
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("Game over, Score: " + (score - initialSnakeSize));
+			Console.ReadKey(true);
 		}
 
 		static void UpdateDirection()
@@ -85,89 +175,23 @@ namespace SnakeGame
 			}
 		}
 
-		static void Main(string[] args)
+		static void DrawBorders()
 		{
-			Console.CursorVisible = false;
-			Console.SetWindowSize(windowWidth, windowHeight);
-			DrawBorders();
-	
-			int score = initialSnakeSize;
-			bool gameOver = false;
-
-			List<int> xPos = new List<int>();
-			List<int> yPos = new List<int>();
-
-			Snake snake = new Snake
+			Console.ForegroundColor = ConsoleColor.White;
+			for (int x = 0; x < windowWidth; x++)
 			{
-				Xpos = Console.WindowWidth / 2,
-				Ypos = Console.WindowHeight / 2,
-				SnakeColor = ConsoleColor.Red
-			};
-
-			Berry berry = new Berry
-			{
-				Xpos = randNum.Next(1, windowWidth - 1),
-				Ypos = randNum.Next(1, windowHeight - 1),
-			};
-
-			while (!gameOver)
-			{
-				UpdateDirection();
-				snake.Move(movement);
-
-				// Check for self collision
-				for (int i = 0; i < xPos.Count; i++)
-				{
-					if (xPos[i] == snake.Xpos && yPos[i] == snake.Ypos)
-					{
-						gameOver = true;
-						break;
-					}
-				}
-
-				// Check for border collision
-				if (snake.Xpos == Console.WindowWidth - 1 || snake.Xpos == 0 || snake.Ypos == Console.WindowHeight - 1 || snake.Ypos == 0)
-				{
-					gameOver = true;
-				}
-
-				if (snake.Xpos == berry.Xpos && snake.Ypos == berry.Ypos)
-				{
-					score++;
-					berry.Xpos = randNum.Next(1, windowWidth - 1);
-					berry.Ypos = randNum.Next(1, windowHeight - 1);
-				}
-				else if (xPos.Count >= score)
-				{
-					var tailX = xPos[0];
-					var tailY = yPos[0];
-					Console.SetCursorPosition(tailX, tailY);
-					Console.Write(" ");
-					xPos.RemoveAt(0);
-					yPos.RemoveAt(0);
-				}
-
-				xPos.Add(snake.Xpos);
-				yPos.Add(snake.Ypos);
-
-				Console.ForegroundColor = snake.SnakeColor;
-				foreach (var pos in xPos.Zip(yPos, (x, y) => new { X = x, Y = y }))
-				{
-					Console.SetCursorPosition(pos.X, pos.Y);
-					Console.Write("■");
-				}
-
-				Console.ForegroundColor = ConsoleColor.Cyan;
-				Console.SetCursorPosition(berry.Xpos, berry.Ypos);
+				Console.SetCursorPosition(x, 0);
 				Console.Write("■");
-
-				Thread.Sleep(100);
+				Console.SetCursorPosition(x, windowHeight - 1);
+				Console.Write("■");
 			}
-
-			Console.SetCursorPosition(0, Console.WindowHeight / 2);
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine("Game over, Score: " + (score - initialSnakeSize));
-			Console.ReadKey(true);
+			for (int y = 0; y < windowHeight; y++)
+			{
+				Console.SetCursorPosition(0, y);
+				Console.Write("■");
+				Console.SetCursorPosition(windowWidth - 1, y);
+				Console.Write("■");
+			}
 		}
 	}
 }
