@@ -51,15 +51,14 @@ public partial class GameManager : Node
 
     private void RestartGame()
 {
-    // Disable and reset positions rather than freeing and recreating
     foreach (var segment in snakeSegments)
     {
-        segment.Visible = false;  // Hide instead of freeing
-        segment.Position = startingPoss;  // Reset position
+        segment.Visible = false;
+        segment.Position = startingPoss;
     }
-    snakeSegments.Clear();  // Clear the list
+    snakeSegments.Clear();
 
-    // Re-enable the initial segment and ensure it's visible
+
     var initialSnakeSegment = GetNode<Sprite2D>("Snake");
     initialSnakeSegment.Position = startingPoss;
     initialSnakeSegment.Visible = true;
@@ -143,7 +142,7 @@ public partial class GameManager : Node
     private void IncreaseSnakeLength()
     {
         var newSegment = new Sprite2D();
-        newSegment.Texture = snakeSegments[0].Texture; // Assuming all segments use the same texture
+        newSegment.Texture = snakeSegments[0].Texture;
         newSegment.Position = snakeSegments[snakeSegments.Count - 1].Position;
         AddChild(newSegment);
         snakeSegments.Add(newSegment);
